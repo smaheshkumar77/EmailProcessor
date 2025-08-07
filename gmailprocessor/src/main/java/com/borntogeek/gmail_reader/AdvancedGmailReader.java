@@ -31,10 +31,14 @@ import jakarta.mail.search.SearchTerm;
 
 public class AdvancedGmailReader {
 
-	private static final String EMAIL = "example@gmail.com";
-	private static final String APP_PASSWORD = "xxxx xxxx xxxx xxxx";
+	//private static final String EMAIL = "example@gmail.com";
+	private static final String EMAIL = System.getenv("EMAIL");
+	//private static final String APP_PASSWORD = "xxxx xxxx xxxx xxxx";
+	private static final String APP_PASSWORD = System.getenv("GMAILReader_APP_PD");
 
 	public static void main(String[] args) throws IOException {
+		System.out.println("EMAIL: "+ EMAIL);
+		System.out.println("App_PD: "+ APP_PASSWORD);
 		List<Email> emails = readEmailsFromGmail();
 
 		// Sort emails by receivedOn date - latest first
