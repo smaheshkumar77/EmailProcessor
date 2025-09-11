@@ -48,6 +48,7 @@ public class AdvancedGmailReader {
 			saveEmailAttachments(email.getAttachments());
 			System.out.println(email);
 		}
+		System.out.println("Email reading is done!!!");
 	}
 
 	private static List<Email> readEmailsFromGmail() {
@@ -58,7 +59,16 @@ public class AdvancedGmailReader {
 			store = getImapStore();
 			folder = getFolderFromStore(store, "INBOX");
 
-			Message[] messages = folder.search(getMessagesSearchTerm());
+			//Message[] messages = folder.search(getMessagesSearchTerm());
+			Message[] messages = null;
+			SearchTerm term = getMessagesSearchTerm();
+			if (term != null) {
+				messages = folder.search(term);
+			} else {
+				messages = folder.getMessages(); // no filter
+			}
+
+
 			folder.fetch(messages, getFetchProfile());
 
 			List<Email> emails = new ArrayList<Email>(messages.length);
@@ -103,8 +113,9 @@ public class AdvancedGmailReader {
 	}
 
 	private static SearchTerm getMessagesSearchTerm() {
-		Date yesterdayDate = new Date(new Date().getTime() - (1000 * 60 * 60 * 24));
-		return new ReceivedDateTerm(ComparisonTerm.GT, yesterdayDate);
+		//Date yesterdayDate = new Date(new Date().getTime() - (1000 * 60 * 60 * 24));
+		//return new ReceivedDateTerm(ComparisonTerm.GT, yesterdayDate);
+		return null;
 	}
 
 	private static FetchProfile getFetchProfile() {
