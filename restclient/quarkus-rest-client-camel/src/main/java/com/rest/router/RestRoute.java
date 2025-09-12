@@ -1,7 +1,7 @@
 package com.rest.router;
 
 import org.apache.camel.builder.RouteBuilder;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class RestRoute extends RouteBuilder {
