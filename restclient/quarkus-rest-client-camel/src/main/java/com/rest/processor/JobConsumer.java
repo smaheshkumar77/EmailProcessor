@@ -1,5 +1,6 @@
 package com.rest.processor;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.core.eventbus.EventBus;
 import io.vertx.mutiny.core.eventbus.Message;
@@ -8,6 +9,7 @@ import jakarta.inject.Inject;
 import org.apache.camel.ProducerTemplate;
 
 @ApplicationScoped
+@RegisterForReflection
 public class JobConsumer {
 
     @Inject
