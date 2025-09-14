@@ -8,6 +8,13 @@ public class RestRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
+        rest("/test")
+            .post("/info")
+            .routeId("test")
+            .to("direct:processJob")
+            ;
+  System.out.println("DEBUG :: RestRoute :: rest :: ${body}"+ exchangeProperty("body"));
+
         from("direct:processJob")
             .routeId("process-job")
             // transform/process headers/body as needed
