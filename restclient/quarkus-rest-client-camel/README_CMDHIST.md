@@ -268,3 +268,16 @@
   118  mvn clean install -DskipTests=true quarkus:dev
   119  cat /etc/os-release
 
+  ---------------------------------
+
+  echo $JAVA_HOME
+  207  export PATH=$JAVA_HOME/bin:$PATH
+  208  java -version
+  209  native-image --version
+sdk install java 21.0.8-graal
+sdk list java
+sdk use java 21.0.8-graal
+echo $JAVA_HOME
+mvn clean package -Dnative
+
+
