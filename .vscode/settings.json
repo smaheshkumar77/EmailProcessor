@@ -1,7 +1,6 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.updateBuildConfiguration": "automatic",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/codespace/.vscode-remote/data/User/globalStorage/redhat.vscode-camelk/java-dependencies/*.jar"
+        "lib/**/*.jar"
     ]
 }
