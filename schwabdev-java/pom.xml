@@ -19,6 +19,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>graalvm-reachability-metadata</artifactId>
+            <version>0.10.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- JSON serialization/deserialization -->
         <dependency>
@@ -56,6 +68,13 @@
             <version>5.11.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>graalvm-reachability-metadata</artifactId>
+            <version>0.10.2</version>
+            <type>pom</type>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,30 +108,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!-- GraalVM Native Image -->
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-                <version>0.10.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <imageName>schwabdev-java</imageName>
-                    <mainClass>com.mycompany.schwabdev.examples.Main</mainClass>
-                    <buildArgs>
-                        <!-- Enable reflection for Jackson -->
-                        --initialize-at-build-time=com.fasterxml.jackson
-                        --report-unsupported-elements-at-runtime
-                        --no-fallback
-                    </buildArgs>
-                </configuration>
             </plugin>
         </plugins>
     </build>
