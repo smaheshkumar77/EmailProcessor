@@ -10,26 +10,7 @@
     9  eval "$(oh-my-posh init bash --config '~/Tech/themes/quick-term_deb1.omp.json')"
    10  eval "$(oh-my-posh init bash --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/quick-term.omp.json')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-clear
-pwd
-ls -lstra
-ls
-eval "$(oh-my-posh init bash --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/quick-term.omp.json')
+#eval "$(oh-my-posh init bash --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/quick-term.omp.json')
    11  pwd
    12  whoami
    13  ls
