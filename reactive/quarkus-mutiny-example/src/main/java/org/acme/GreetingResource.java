@@ -1,5 +1,7 @@
 package org.acme;
 
+import io.smallrye.mutiny.Uni;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -16,9 +18,26 @@ public class GreetingResource {
     }
     @POST
     @Produces(MediaType.TEXT_PLAIN)
-    public String helloUni() {
-        return "Hello from Quarkus REST uni";
+    public Uni<String> helloUni() {
+        return Uni.createFrom().item("Hello from Quarkus REST uni");
     }
+
+    @GET
+    @Path("/uni")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String>getUni() {
+        return Uni.createFrom().item("Hello from Quarkus REST uni");
+    }
+
+    @GET
+    @Path("/async")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> asyncHello() {
+        return Uni.createFrom().item(() -> "Async Hello").onItem().delayIt()
+                                            .by(java.time.Duration.ofSeconds(5))
+                                        ;
+    }
+
 }
 
     
